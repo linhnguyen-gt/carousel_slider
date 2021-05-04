@@ -148,27 +148,32 @@ class CarouselDemo extends StatelessWidget {
         enlargeCenterPage: true,
         viewportFraction: 0.9,
         aspectRatio: 2.0,
+        initialPage: 2,
       );
       return Column(children: [
         basicSlider,
-        Row(children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: RaisedButton(
-                onPressed: () => basicSlider.previousPage(
-                    duration: Duration(milliseconds: 300), curve: Curves.linear),
-                child: Text('prev slider'),
-              ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Flexible(
+            child: RaisedButton(
+              onPressed: () => basicSlider.previousPage(
+                  duration: Duration(milliseconds: 300), curve: Curves.linear),
+              child: Text('←'),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
+          Flexible(
+            child: RaisedButton(
+              onPressed: () => basicSlider.nextPage(
+                  duration: Duration(milliseconds: 300), curve: Curves.linear),
+              child: Text('→'),
+            ),
+          ),
+          ...Iterable<int>.generate(imgList.length).map(
+            (int pageIndex) => Flexible(
               child: RaisedButton(
-                onPressed: () => basicSlider.nextPage(
-                    duration: Duration(milliseconds: 300), curve: Curves.linear),
-                child: Text('next slider'),
+                onPressed: () => basicSlider.animateToPage(pageIndex,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.linear),
+                child: Text("$pageIndex"),
               ),
             ),
           ),
@@ -277,6 +282,17 @@ class CarouselDemo extends StatelessWidget {
       );
     }
 
+    CarouselSlider getOnDemandCarousel(BuildContext mediaContext) {
+      return CarouselSlider.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 15,
+        itemBuilder: (BuildContext context, int itemIndex) =>
+            Container(
+              child: Text(itemIndex.toString()),
+            ),
+      );
+    }
+
     return MaterialApp(
       title: 'demo',
       home: Scaffold(
@@ -338,6 +354,14 @@ class CarouselDemo extends StatelessWidget {
                   return Column(children: [
                     Text('Full screen carousel'),
                     getFullScreenCarousel(context),
+                  ]);
+                })),
+            Padding(
+                padding: EdgeInsets.only(top: 15.0),
+                child: Builder(builder: (context) {
+                  return Column(children: [
+                    Text('On demand item carousel'),
+                    getOnDemandCarousel(context),
                   ]);
                 })),
           ],

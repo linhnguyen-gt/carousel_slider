@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/linh/Development/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/linh/Downloads/carousel_slider-1.3.1/example"
+export "FLUTTER_APPLICATION_PATH=/Users/linh/Documents/GitHub/carousel_slider/example"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
