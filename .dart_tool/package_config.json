@@ -131,10 +131,10 @@
       "name": "carousel_slider",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.6"
     }
   ],
-  "generated": "2021-05-04T10:38:31.961675Z",
+  "generated": "2021-05-04T10:49:41.189957Z",
   "generator": "pub",
   "generatorVersion": "2.12.2"
 }
