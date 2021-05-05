@@ -2,7 +2,6 @@ library carousel_slider;
 
 import 'dart:async';
 
-import 'package:carousel_slider/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -288,9 +287,9 @@ class _CarouselSliderState extends State<CarouselSlider>
             // this is a dirty hack
             if (widget.pageController.position.minScrollExtent == null ||
                 widget.pageController.position.maxScrollExtent == null) {
-              Future.delayed(Duration(microseconds: 1), () {
-                setState(() {});
-              });
+              // Future.delayed(Duration(microseconds: 1), () {
+              //   setState(() {});
+              // });
               return Container();
             }
             double value = widget.pageController.page - i;
