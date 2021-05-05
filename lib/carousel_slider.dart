@@ -288,7 +288,7 @@ class _CarouselSliderState extends State<CarouselSlider>
             // this is a dirty hack
             if (widget.pageController.position.minScrollExtent == null ||
                 widget.pageController.position.maxScrollExtent == null) {
-              Future.delayed(Duration(microseconds: 1), () {
+              Future.delayed(Duration(microseconds: 10), () {
                 if (this.mounted) {
                   setState(() {});
                 }
