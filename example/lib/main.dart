@@ -282,16 +282,16 @@ class CarouselDemo extends StatelessWidget {
       );
     }
 
-    CarouselSlider getOnDemandCarousel(BuildContext mediaContext) {
-      return CarouselSlider.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 15,
-        itemBuilder: (BuildContext context, int itemIndex) =>
-            Container(
-              child: Text(itemIndex.toString()),
-            ),
-      );
-    }
+    // CarouselSlider getOnDemandCarousel(BuildContext mediaContext) {
+    //   return CarouselSlider.builder(
+    //     scrollDirection: Axis.horizontal,
+    //     itemCount: 15,
+    //     itemBuilder: (BuildContext context, int itemIndex) =>
+    //         Container(
+    //           child: Text(itemIndex.toString()),
+    //         ),
+    //   );
+    // }
 
     return MaterialApp(
       title: 'demo',
@@ -356,14 +356,14 @@ class CarouselDemo extends StatelessWidget {
                     getFullScreenCarousel(context),
                   ]);
                 })),
-            Padding(
-                padding: EdgeInsets.only(top: 15.0),
-                child: Builder(builder: (context) {
-                  return Column(children: [
-                    Text('On demand item carousel'),
-                    getOnDemandCarousel(context),
-                  ]);
-                })),
+            // Padding(
+            //     padding: EdgeInsets.only(top: 15.0),
+            //     child: Builder(builder: (context) {
+            //       return Column(children: [
+            //         Text('On demand item carousel'),
+            //         getOnDemandCarousel(context),
+            //       ]);
+            //     })),
           ],
         ),
       ),
