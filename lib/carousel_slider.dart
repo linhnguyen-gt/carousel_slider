@@ -212,7 +212,6 @@ class _CarouselSliderState extends State<CarouselSlider>
     with TickerProviderStateMixin {
   Timer timer;
 
-  PageController pageController;
   @override
   void initState() {
     super.initState();
@@ -270,25 +269,29 @@ class _CarouselSliderState extends State<CarouselSlider>
       itemCount: widget.enableInfiniteScroll ? null : widget.itemCount,
       onPageChanged: (int index) {
         int currentPage = _getRealIndex(
-            index + widget.initialPage, widget.realPage, widget.items.length);
+            index + widget.initialPage, widget.realPage, widget.itemCount);
         if (widget.onPageChanged != null) {
           widget.onPageChanged(currentPage);
         }
       },
       itemBuilder: (BuildContext context, int i) {
         final int index = _getRealIndex(
-            i + widget.initialPage, widget.realPage, widget.items.length);
+            i + widget.initialPage, widget.realPage, widget.itemCount);
 
         return AnimatedBuilder(
           animation: widget.pageController,
-          child: widget.items[index],
+          child: (widget.items != null)
+              ? widget.items[index]
+              : widget.itemBuilder(context, index),
           builder: (BuildContext context, child) {
             // on the first render, the pageController.page is null,
             // this is a dirty hack
             if (widget.pageController.position.minScrollExtent == null ||
                 widget.pageController.position.maxScrollExtent == null) {
               Future.delayed(Duration(microseconds: 1), () {
-                setState(() {});
+                if (this.mounted) {
+                  setState(() {});
+                }
               });
               return Container();
             }
