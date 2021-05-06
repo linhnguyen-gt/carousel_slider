@@ -154,14 +154,14 @@ class CarouselDemo extends StatelessWidget {
         basicSlider,
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Flexible(
-            child: RaisedButton(
+            child: TextButton(
               onPressed: () => basicSlider.previousPage(
                   duration: Duration(milliseconds: 300), curve: Curves.linear),
               child: Text('←'),
             ),
           ),
           Flexible(
-            child: RaisedButton(
+            child: TextButton(
               onPressed: () => basicSlider.nextPage(
                   duration: Duration(milliseconds: 300), curve: Curves.linear),
               child: Text('→'),
@@ -169,7 +169,7 @@ class CarouselDemo extends StatelessWidget {
           ),
           ...Iterable<int>.generate(imgList.length).map(
             (int pageIndex) => Flexible(
-              child: RaisedButton(
+              child: TextButton(
                 onPressed: () => basicSlider.animateToPage(pageIndex,
                     duration: Duration(milliseconds: 300),
                     curve: Curves.linear),
