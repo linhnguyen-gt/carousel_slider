@@ -2,8 +2,18 @@ library carousel_slider;
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
+
+import 'basic.dart';
+import 'container.dart';
+import 'framework.dart';
+import 'gesture_detector.dart';
+import 'media_query.dart';
+import 'page_view.dart';
+import 'scroll_physics.dart';
+import 'ticker_provider.dart';
+import 'transitions.dart';
+
 
 class CarouselSlider extends StatefulWidget {
   CarouselSlider(
