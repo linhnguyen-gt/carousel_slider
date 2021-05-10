@@ -185,8 +185,9 @@ class CarouselSlider extends StatefulWidget {
   /// Jumps the page position from its current value to the given value,
   /// without animation, and without checking if the new value is in range.
   void jumpToPage(int page) {
-    final index = _getRealIndex(
-        pageController.page.toInt(), realPage - initialPage, itemCount);
+    final index =
+        _getRealIndex(
+            pageController.page.toInt(), realPage - initialPage, itemCount);
     return pageController
         .jumpToPage(pageController.page.toInt() + page - index);
   }
@@ -196,8 +197,9 @@ class CarouselSlider extends StatefulWidget {
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
   Future<void> animateToPage(int page, {Duration duration, Curve curve}) {
-    final index = _getRealIndex(
-        pageController.page.toInt(), realPage - initialPage, itemCount);
+    final index =
+        _getRealIndex(
+            pageController.page.toInt(), realPage - initialPage, itemCount);
     return pageController.animateToPage(
         pageController.page.toInt() + page - index,
         duration: duration,
@@ -219,13 +221,11 @@ class _CarouselSliderState extends State<CarouselSlider>
   }
 
   Timer getTimer() {
-    return widget.autoPlay
-        ? Timer.periodic(widget.autoPlayInterval, (_) {
-            widget.pageController.nextPage(
-                duration: widget.autoPlayAnimationDuration,
-                curve: widget.autoPlayCurve);
-          })
-        : null;
+    return widget.autoPlay ? Timer.periodic(widget.autoPlayInterval, (_) {
+      widget.pageController.nextPage(
+          duration: widget.autoPlayAnimationDuration,
+          curve: widget.autoPlayCurve);
+    }) : null;
   }
 
   void pauseOnTouch() {
@@ -286,11 +286,12 @@ class _CarouselSliderState extends State<CarouselSlider>
           builder: (BuildContext context, child) {
             // on the first render, the pageController.page is null,
             // this is a dirty hack
-            if (widget.pageController.position.hasContentDimensions) {
+            if (widget.pageController.position.minScrollExtent == null ||
+                widget.pageController.position.maxScrollExtent == null) {
               Future.delayed(Duration(microseconds: 1), () {
-                if (this.mounted) {
+	        if (this.mounted) {
                   setState(() {});
-                }
+		}
               });
               return Container();
             }
