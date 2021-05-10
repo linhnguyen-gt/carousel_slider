@@ -34,7 +34,7 @@ File scroll_position.dart
 
 ## Installation
 
-Add `carousel_slider: 1.4.1` in your `pubspec.yaml` dependencies. And import it:
+Add `carousel_slider` in your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:carousel_slider/carousel_slider.dart';
