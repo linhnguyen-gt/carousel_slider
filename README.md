@@ -2,9 +2,39 @@
 
 A carousel slider widget, support infinite scroll and custom child widget, with auto play feature.
 
+Flutter version : 2.0.5
+
+Fix Null check operator used on a null value
+
+File scroll_position.dart 
+
+        @override
+        //double get minScrollExtent => _minScrollExtent!;
+        // double? _minScrollExtent;
+        double get minScrollExtent {
+        if (_minScrollExtent == null) {
+        _minScrollExtent = 0.0;
+        }
+        return double.parse(_minScrollExtent.toString());
+        }
+
+        double? _minScrollExtent;
+
+        @override
+        // double get maxScrollExtent => _maxScrollExtent!;
+        // double? _maxScrollExtent;
+        double get maxScrollExtent {
+        if (_maxScrollExtent == null) {
+        _maxScrollExtent = 0.0;
+        }
+        return double.parse(_maxScrollExtent.toString());
+        }
+
+        double? _maxScrollExtent;
+
 ## Installation
 
-Add `carousel_slider: ^1.3.0` in your `pubspec.yaml` dependencies. And import it:
+Add `carousel_slider: 1.4.1` in your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:carousel_slider/carousel_slider.dart';
